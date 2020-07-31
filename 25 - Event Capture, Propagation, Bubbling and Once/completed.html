@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after { 
+    box-sizing: inherit; 
+  }
+
+  div {
+    width: 100%;
+    padding: 100px;
+  }
+
+  .one {
+    background: thistle;
+  }
+
+  .two {
+    background: mistyrose;
+  }
+
+  .three {
+    background: coral;
+  }
+</style>
+
+<button></button>
+<script>
+  //variables
+  const divs = document.querySelectorAll('div');
+
+  //functions
+  function logText(e){
+    e.stopPropagation();
+    //this stops bubbling
+    console.log(this.classList.value);
+  }
+
+  //event listeners
+  divs.forEach(div => div.addEventListener('click',logText,
+  capture: false,
+  once: true 
+  //will only allow the button or whatever to be clicked once, unbinding
+  ));
+
+  /*
+  event capture goes from parent->child (downwards)
+  if you click on div-3, div-2,div-1 etc is also selected:
+  bubbling goes from child->parent (upwards)
+  */
+</script>
+</body>
+</html>

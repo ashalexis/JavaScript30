@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+  const pressed = [];
+  const sequence = 'halp';
+  window.addEventListener('keyup', (e) => {
+    pressed.push(e.key);  
+    pressed.splice(-sequence.length - 1, pressed.length - sequence.length);
+    console.log(pressed)
+    if (pressed.join('').includes(sequence)){
+      console.log('no really, pls send halp')
+    }
+  })
+</script>
+</body>
+</html>
