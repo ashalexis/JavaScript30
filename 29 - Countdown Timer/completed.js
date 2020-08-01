@@ -3,6 +3,7 @@ let countdown;
 const timerDisplay = document.querySelector('.display__time-left');
 const endTime = document.querySelector('.display__end-time');
 const buttons = document.querySelectorAll('[data-time]');
+const clearButton = document.querySelector('.clear');
 
 //functions
 function timer(seconds){
@@ -62,4 +63,9 @@ document.customForm.addEventListener('submit', function(e){
     const mins = this.minutes.value;
     timer(mins * 60);
     this.reset();
+});
+
+clearButton.addEventListener('click',()=>{
+    timer(0);
+    endTime.textContent = '';
 });
